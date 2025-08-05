@@ -1,6 +1,8 @@
 # <img src='Workflow/icon.png' width='45' align='center' alt='icon'> Menu Bar Search - An Alfred Workflow
 
-Quickly search through menu options of the front-most application. [↓ Download](https://github.com/BenziAhamed/Menu-Bar-Search/releases/latest/download/Menu.Bar.Search.alfredworkflow)
+Quickly search through menu options of the front-most application. 
+
+[↓ Download](https://github.com/April-June-August/Alfred--Menu-Bar-Search/releases/latest/)
 
 <span>
   <img src='assets/finder.png' width='33%' alt='finder'> 
@@ -51,4 +53,5 @@ E.g
 
 ## Credits
 
+- This repo is a fork of [Benzi Ahamed](https://github.com/BenziAhamed)’s [Menu Bar Search](https://github.com/BenziAhamed/Menu-Bar-Search) ([abandoned](https://github.com/BenziAhamed/Menu-Bar-Search/pull/33)), including a [fix](https://github.com/occludedpixel/Menu-Bar-Search) from [occludedpixel](https://github.com/occludedpixel).
 - Based on the ctwise's ObjC implementation of [Menu Bar Search](https://www.alfredforum.com/topic/1993-menu-search/), which I've ported over to Swift and added caching and per app configuration to speed things up.
