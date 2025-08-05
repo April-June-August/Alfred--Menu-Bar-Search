@@ -478,10 +478,8 @@ Recommended to keep this enabled always.</string>
 			<string>recacheOnStartup</string>
 		</dict>
 	</array>
-	<key>variablesdontexport</key>
-	<array/>
 	<key>version</key>
-	<string>2.0</string>
+	<string>2025.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/April-June-August/Alfred--Menu-Bar-Search</string>
 </dict>
