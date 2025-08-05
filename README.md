@@ -1,4 +1,4 @@
-# <img src='assets/icon.png' width='35' align='center' alt='icon'> Menu Bar Search - An Alfred Workflow
+# <img src='Workflow/icon.png' width='45' align='center' alt='icon'> Menu Bar Search - An Alfred Workflow
 
 Quickly search through menu options of the front-most application. [↓ Download](https://github.com/BenziAhamed/Menu-Bar-Search/releases/latest/download/Menu.Bar.Search.alfredworkflow)
 
