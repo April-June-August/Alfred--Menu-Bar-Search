@@ -1,6 +1,6 @@
 # <img src='Workflow/icon.png' width='45' align='center' alt='icon'> Menu Bar Search - An Alfred Workflow
 
-Quickly search through menu options of the front-most application. 
+Search through menu options of the frontmost application. 
 
 [↓ Download](https://github.com/April-June-August/Alfred--Menu-Bar-Search/releases/latest/)
 
@@ -14,7 +14,7 @@ Quickly search through menu options of the front-most application.
 
 ## Usage
 
-- Type `m` in Alfred to list menu bar items for front most application.
+- Type `m` in Alfred to list menu bar items for frontmost application.
 - You can filter menu items by name, or do a fuzzy search.
 - Alternatively, set a hotkey to trigger the workflow as well.
 
