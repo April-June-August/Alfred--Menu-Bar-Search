@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.folded-paper.menu-bar-search</string>
+	<string>com.may-june-july.menu-bar-search</string>
 	<key>category</key>
 	<string>Tools</string>
 	<key>connections</key>
@@ -51,7 +51,7 @@
 		</array>
 	</dict>
 	<key>createdby</key>
-	<string>Benzi Ahamed</string>
+	<string>Benzi Ahamed, May June July</string>
 	<key>description</key>
 	<string>Search through menu options for front-most application</string>
 	<key>disabled</key>
@@ -483,6 +483,6 @@ Recommended to keep this enabled always.</string>
 	<key>version</key>
 	<string>2.0</string>
 	<key>webaddress</key>
-	<string>https://github.com/BenziAhamed/Menu-Bar-Search</string>
+	<string>https://github.com/April-June-August/Alfred--Menu-Bar-Search</string>
 </dict>
 </plist>
