@@ -72,11 +72,11 @@
 				<key>focusedappvariablename</key>
 				<string></string>
 				<key>hotkey</key>
-				<integer>-1</integer>
+				<integer>0</integer>
 				<key>hotmod</key>
-				<integer>1048576</integer>
+				<integer>0</integer>
 				<key>hotstring</key>
-				<string>double tap</string>
+				<string></string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -88,29 +88,6 @@
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
 			<string>892B9EF8-E33C-4D32-BBEB-591DFBEFFFEC</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>4</integer>
-				<key>script</key>
-				<string>./menu -click "{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>C8DFF277-2C74-48D3-B685-F304268DF007</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -140,9 +117,26 @@
 				<key>queuemode</key>
 				<integer>2</integer>
 				<key>runningsubtext</key>
-				<string>loading...</string>
+				<string>Building…</string>
 				<key>script</key>
-				<string>./menu \
+				<string># Check if menu executable exists in workflow folder
+if [ ! -f "./menu/menu" ]; then
+    # Build the menu executable from source
+    cd menu
+    xcrun swift build -c release --arch arm64 --arch x86_64
+    
+    # Copy the built executable to the menu folder
+    cp .build/apple/Products/Release/menu ../menu
+    
+    # Clean up build folder to save space
+    rm -rf .build
+    
+    # Return to workflow root
+    cd ..
+fi
+
+# Run the menu executable with original parameters
+./menu/menu \
 -cache 2 \
 -max-children "$maxItemsPerMenu" \
 -max-depth "$maxSubMenusToSearch" \
@@ -150,17 +144,19 @@
 -show-apple-menu "$showAppleMenuItems" \
 -async \
 -recache "$recacheOnStartup" \
--query "{query}"</string>
+-query "$1"</string>
 				<key>scriptargtype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
+				<key>skipuniversalaction</key>
+				<true/>
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
 				<string>Menu Bar Search</string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>11</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
@@ -170,6 +166,29 @@
 			<string>25DA0D72-264A-4CD8-9A6A-9FFD4B652DF1</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>4</integer>
+				<key>script</key>
+				<string>./menu/menu -click "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>11</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>C8DFF277-2C74-48D3-B685-F304268DF007</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -199,17 +218,19 @@
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>./menu -show-folders</string>
+				<string>./menu/menu -show-folders</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
+				<key>skipuniversalaction</key>
+				<true/>
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
 				<string>Menu search folders</string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>11</integer>
 				<key>withspace</key>
 				<false/>
 			</dict>
@@ -308,12 +329,6 @@ E.g
 		<dict>
 			<key>colorindex</key>
 			<integer>4</integer>
-			<key>note</key>
-			<string>Thanks for downloading! 
-
-I highly recommend you set a hotkey for this so that it's even easier to trigger it.
-
-I personally set it to double-tapping the ⌘ (command) key.</string>
 			<key>xpos</key>
 			<real>125</real>
 			<key>ypos</key>
