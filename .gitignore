@@ -172,3 +172,4 @@ Dependencies/
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,objective-c,osx
 Workflow/prefs.plist
 Workflow/menu/menu
+Workflow/LICENSE
