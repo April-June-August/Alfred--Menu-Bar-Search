@@ -14,7 +14,7 @@ extension MenuItem {
     }
 
     var uid: String {
-        return path.joined(separator: ">")
+        return path.joined(separator: "→")
     }
 
     var appleMenuItem: Bool {
@@ -24,7 +24,7 @@ extension MenuItem {
     var subtitle: String {
         var p = path
         p.removeLast()
-        return p.joined(separator: " > ")
+        return p.joined(separator: " → ")
     }
 
     var title: String {
