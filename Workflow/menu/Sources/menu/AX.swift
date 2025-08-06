@@ -60,14 +60,75 @@ func decode(modifiers: Int) -> String {
     if (modifiers & 0x02) > 0 { result.append("⌥") }
     if (modifiers & 0x01) > 0 { result.append("⇧") }
     if (modifiers & 0x08) == 0 { result.append("⌘") }
+    if (modifiers & 0x10) > 0 { result.append("fn ") }
     return result.joined(separator: halfWidthSpace)
 }
 
 func getShortcut(_ cmd: String?, _ modifiers: Int, _ virtualKey: Int) -> String {
     var shortcut: String? = cmd
     if let s = shortcut {
-        if s.unicodeScalars[s.unicodeScalars.startIndex].value == 0x7f {
+        let unicodeValue = s.unicodeScalars[s.unicodeScalars.startIndex].value
+        switch unicodeValue {
+        case 0x7f:
             shortcut = "⌦"
+        case 0xf700:
+            shortcut = "▲"
+        case 0xf701:
+            shortcut = "▼"
+        case 0xf702:
+            shortcut = "◀︎"
+        case 0xf703:
+            shortcut = "▶︎"
+        case 0xf704:
+            shortcut = "F1"
+        case 0xf705:
+            shortcut = "F2"
+        case 0xf706:
+            shortcut = "F3"
+        case 0xf707:
+            shortcut = "F4"
+        case 0xf708:
+            shortcut = "F5"
+        case 0xf709:
+            shortcut = "F6"
+        case 0xf70a:
+            shortcut = "F7"
+        case 0xf70b:
+            shortcut = "F8"
+        case 0xf70c:
+            shortcut = "F9"
+        case 0xf70d:
+            shortcut = "F10"
+        case 0xf70e:
+            shortcut = "F11"
+        case 0xf70f:
+            shortcut = "F12"
+        case 0xf710:
+            shortcut = "F13"
+        case 0xf711:
+            shortcut = "F14"
+        case 0xf712:
+            shortcut = "F15"
+        case 0xf713:
+            shortcut = "F16"
+        case 0xf714:
+            shortcut = "F17"
+        case 0xf715:
+            shortcut = "F18"
+        case 0xf716:
+            shortcut = "F19"
+        case 0xf717:
+            shortcut = "F20"
+        case 0xf718:
+            shortcut = "F21"
+        case 0xf719:
+            shortcut = "F22"
+        case 0xf71a:
+            shortcut = "F23"
+        case 0xf71b:
+            shortcut = "F24"
+        default:
+            break
         }
     }
     else if virtualKey > 0 {
