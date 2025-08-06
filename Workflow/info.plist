@@ -183,7 +183,7 @@ if [ ! -f "./menu/menu" ]; then
     {
       "arg": "compile-script",
       "title": "Compile the binary first",
-      "subtitle": "Press ↩ to compile. Should complete within 1 minute. You will be notified when done."
+      "subtitle": "Press ↩ to compile. You will be notified when it’s done."
     }
   ]
 }
