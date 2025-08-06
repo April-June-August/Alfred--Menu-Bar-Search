@@ -82,7 +82,7 @@ if fm.fileExists(atPath: settingsPath) {
                 let appOverride = settings.appFilters[i]
 
                 if appOverride.disabled {
-                    Alfred.quit("Menu search disabled!", subtitle: "\(appDisplayName)", icon: "icon.error.png")
+                    Alfred.quit("Menu search disabled!", subtitle: "\(appDisplayName)", icon: "item-icons/icon.error.png")
                 }
 
                 args.options.appFilter = appOverride
@@ -147,7 +147,7 @@ func render(_ menu: MenuItem) {
         $0.title = menu.shortcut.isEmpty ? menu.title : "\(menu.title) - \(menu.shortcut)"
         $0.subtitle = menu.subtitle
         $0.arg = menu.arg
-        $0.icon.path = apple ? "apple-icon.png" : appPath
+        $0.icon.path = apple ? "item-icons/apple-icon.png" : appPath
         $0.icon.type = apple ? "" : "fileicon"
     })
 }
@@ -231,7 +231,7 @@ if a.results.items.count == 0 {
     // a.add(.with { item in item.title = "No menu items" })
     a.add(AlfredResultItem.with {
         $0.title = "No menu items"
-        $0.icon = .with { $0.path = "icon.error.png" }
+        $0.icon = .with { $0.path = "item-icons/icon.error.png" }
     })
 }
 

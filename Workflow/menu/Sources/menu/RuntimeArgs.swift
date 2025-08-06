@@ -149,7 +149,7 @@ class RuntimeArgs {
 
             case "-show-folders":
                 let a = Alfred()
-                let icon = AlfredResultItemIcon.with { $0.path = "icon.settings.png" }
+                let icon = AlfredResultItemIcon.with { $0.path = "item-icons/icon.settings.png" }
                 a.add(AlfredResultItem.with {
                     $0.title = "Settings Folder"
                     $0.arg = Alfred.data()
