@@ -12,11 +12,49 @@
 		<array>
 			<dict>
 				<key>destinationuid</key>
+				<string>4BA1B2B0-486B-4D0B-A65F-F3C6133D4D93</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>3E7F6F28-F06A-4530-9248-3A6D3055FEAF</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>559999AD-235E-4285-9416-59CF7E409D05</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>4BA1B2B0-486B-4D0B-A65F-F3C6133D4D93</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
 				<string>C8DFF277-2C74-48D3-B685-F304268DF007</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
 				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>3E7F6F28-F06A-4530-9248-3A6D3055FEAF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>DBEB8FA7-B9B6-4232-A996-61B4E1B6D0A8</string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -34,13 +72,38 @@
 				<false/>
 			</dict>
 		</array>
+		<key>97A7A235-BF68-42FD-ABC3-3FBC1DC2381D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3E7F6F28-F06A-4530-9248-3A6D3055FEAF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>DBEB8FA7-B9B6-4232-A996-61B4E1B6D0A8</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>CE6777D4-DFB9-460C-897D-EB6C45E6A769</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>C8DFF277-2C74-48D3-B685-F304268DF007</key>
 		<array/>
 		<key>CD061C82-1321-458D-B46E-3603B3DB27E0</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>CE6777D4-DFB9-460C-897D-EB6C45E6A769</string>
+				<string>97A7A235-BF68-42FD-ABC3-3FBC1DC2381D</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -63,78 +126,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>alfredfiltersresults</key>
+				<key>concurrently</key>
 				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
 				<key>escaping</key>
 				<integer>4</integer>
-				<key>keyword</key>
-				<string>{var:main_keyword}</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>2</integer>
-				<key>runningsubtext</key>
-				<string>Building…</string>
 				<key>script</key>
-				<string># Check if menu executable exists in workflow folder
-if [ ! -f "./menu/menu" ]; then
-    # Build the menu executable from source
-    cd menu
-    xcrun swift build -c release --arch arm64 --arch x86_64
-    
-    # Copy the built executable to the menu folder
-    cp .build/apple/Products/Release/menu ../menu
-    
-    # Clean up build folder to save space
-    rm -rf .build
-    
-    # Return to workflow root
-    cd ..
-fi
-
-# Run the menu executable with original parameters
-./menu/menu \
--cache 2 \
--max-children "$maxItemsPerMenu" \
--max-depth "$maxSubMenusToSearch" \
--show-disabled "$showDisabledItems" \
--show-apple-menu "$showAppleMenuItems" \
--async \
--recache "$recacheOnStartup" \
--query "$1"</string>
+				<string>./menu/menu -click "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
-				<key>skipuniversalaction</key>
-				<true/>
-				<key>subtext</key>
-				<string></string>
-				<key>title</key>
-				<string>Menu Bar Search</string>
 				<key>type</key>
 				<integer>11</integer>
-				<key>withspace</key>
-				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>25DA0D72-264A-4CD8-9A6A-9FFD4B652DF1</string>
+			<string>C8DFF277-2C74-48D3-B685-F304268DF007</string>
 			<key>version</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -170,12 +180,159 @@ fi
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>4</integer>
+				<key>keyword</key>
+				<string>{var:main_keyword}</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>2</integer>
+				<key>runningsubtext</key>
+				<string>Loading menu items…</string>
+				<key>script</key>
+				<string># Check if menu executable exists
+if [ ! -f "./menu/menu" ]; then
+    # Output Alfred JSON to prompt user to compile
+    cat &lt;&lt; 'EOF'
+{
+  "items": [
+    {
+      "arg": "compile-script",
+      "title": "Compile the binary first",
+      "subtitle": "Press ↩ to compile. Should complete within 1 minute. You will be notified when done."
+    }
+  ]
+}
+EOF
+else
+    # Binary exists, run the menu executable with original parameters
+    ./menu/menu \
+    -cache 2 \
+    -max-children "$maxItemsPerMenu" \
+    -max-depth "$maxSubMenusToSearch" \
+    -show-disabled "$showDisabledItems" \
+    -show-apple-menu "$showAppleMenuItems" \
+    -async \
+    -recache "$recacheOnStartup" \
+    -query "$1"
+fi</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Menu Bar Search</string>
+				<key>type</key>
+				<integer>11</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>25DA0D72-264A-4CD8-9A6A-9FFD4B652DF1</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>compile-script</string>
+						<key>outputlabel</key>
+						<string>Compile</string>
+						<key>uid</key>
+						<string>DBEB8FA7-B9B6-4232-A996-61B4E1B6D0A8</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>Click</string>
+				<key>hideelse</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>4BA1B2B0-486B-4D0B-A65F-F3C6133D4D93</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
-				<integer>4</integer>
+				<integer>102</integer>
 				<key>script</key>
-				<string>./menu/menu -click "$1"</string>
+				<string># Save original working directory
+ORIGINAL_DIR="$(pwd)"
+
+# Create temporary directory for compilation
+TEMP_DIR="/tmp/alfred_menu_build_$$"
+
+# Copy menu source to temporary directory
+cp -r menu "$TEMP_DIR"
+
+# Build in temporary directory with output redirected to log
+cd "$TEMP_DIR"
+xcrun swift build -c release --arch arm64 --arch x86_64 &gt; /tmp/alfred_menu_build.log 2&gt;&amp;1
+
+# Check if binary was created successfully
+if [ -f ".build/apple/Products/Release/menu" ]; then
+    # Copy compiled binary back to workflow folder
+    cp .build/apple/Products/Release/menu "$ORIGINAL_DIR/menu/menu"
+    
+    # Output build log to stderr for user debugging
+    cat /tmp/alfred_menu_build.log &gt;&amp;2
+    
+    # Return to original directory
+    cd "$ORIGINAL_DIR"
+    
+    # Check if binary exists in workflow folder
+    if [ -f "./menu/menu" ]; then
+        echo "Binary compiled successfully!"
+    else
+        echo "Failed to copy binary to workflow folder. Please open the Alfred debugger and try again. Report back with all the debugger output."
+    fi
+else
+    # Compilation failed
+    cat /tmp/alfred_menu_build.log &gt;&amp;2
+    cd "$ORIGINAL_DIR"
+    echo "Compilation failed! Please open the Alfred debugger and try again. Report back with all the debugger output."
+fi
+
+# Clean up temporary files
+rm -rf "$TEMP_DIR"
+rm -f /tmp/alfred_menu_build.log</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -186,9 +343,53 @@ fi
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>C8DFF277-2C74-48D3-B685-F304268DF007</string>
+			<string>3E7F6F28-F06A-4530-9248-3A6D3055FEAF</string>
 			<key>version</key>
 			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string></string>
+				<key>title</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>559999AD-235E-4285-9416-59CF7E409D05</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>path</key>
+				<string></string>
+				<key>sortBy</key>
+				<integer>0</integer>
+				<key>sortDirection</key>
+				<integer>0</integer>
+				<key>sortFoldersAtTop</key>
+				<false/>
+				<key>sortOverride</key>
+				<false/>
+				<key>stackBrowserView</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.browseinalfred</string>
+			<key>uid</key>
+			<string>CE6777D4-DFB9-460C-897D-EB6C45E6A769</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -218,7 +419,24 @@ fi
 				<key>runningsubtext</key>
 				<string></string>
 				<key>script</key>
-				<string>./menu/menu -show-folders</string>
+				<string># Check if menu executable exists
+if [ ! -f "./menu/menu" ]; then
+    # Output Alfred JSON to prompt user to compile
+    cat &lt;&lt; 'EOF'
+{
+  "items": [
+    {
+      "arg": "compile-script",
+      "title": "Compile the binary first",
+      "subtitle": "Press ↩ to compile. Should completed within 1 minute. You will be notified when done."
+    }
+  ]
+}
+EOF
+else
+    # Binary exists, run the show-folders command
+    ./menu/menu -show-folders
+fi</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -228,7 +446,7 @@ fi
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string>Menu search folders</string>
+				<string>Menu Bar Search Folders</string>
 				<key>type</key>
 				<integer>11</integer>
 				<key>withspace</key>
@@ -244,23 +462,32 @@ fi
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>path</key>
-				<string></string>
-				<key>sortBy</key>
-				<integer>0</integer>
-				<key>sortDirection</key>
-				<integer>0</integer>
-				<key>sortFoldersAtTop</key>
-				<false/>
-				<key>sortOverride</key>
-				<false/>
-				<key>stackBrowserView</key>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>0</integer>
+						<key>matchstring</key>
+						<string>compile-script</string>
+						<key>outputlabel</key>
+						<string>Compile</string>
+						<key>uid</key>
+						<string>DBEB8FA7-B9B6-4232-A996-61B4E1B6D0A8</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>Show</string>
+				<key>hideelse</key>
 				<false/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.browseinalfred</string>
+			<string>alfred.workflow.utility.conditional</string>
 			<key>uid</key>
-			<string>CE6777D4-DFB9-460C-897D-EB6C45E6A769</string>
+			<string>97A7A235-BF68-42FD-ABC3-3FBC1DC2381D</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -320,10 +547,41 @@ E.g
 		<dict>
 			<key>colorindex</key>
 			<integer>8</integer>
+			<key>note</key>
+			<string>Search through menu bar</string>
 			<key>xpos</key>
 			<real>345</real>
 			<key>ypos</key>
 			<real>165</real>
+		</dict>
+		<key>3E7F6F28-F06A-4530-9248-3A6D3055FEAF</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>1</integer>
+			<key>note</key>
+			<string>Compile binary.</string>
+			<key>xpos</key>
+			<real>675</real>
+			<key>ypos</key>
+			<real>245</real>
+		</dict>
+		<key>4BA1B2B0-486B-4D0B-A65F-F3C6133D4D93</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>xpos</key>
+			<real>505</real>
+			<key>ypos</key>
+			<real>185</real>
+		</dict>
+		<key>559999AD-235E-4285-9416-59CF7E409D05</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>1</integer>
+			<key>xpos</key>
+			<real>1000</real>
+			<key>ypos</key>
+			<real>245</real>
 		</dict>
 		<key>892B9EF8-E33C-4D32-BBEB-591DFBEFFFEC</key>
 		<dict>
@@ -334,12 +592,23 @@ E.g
 			<key>ypos</key>
 			<real>165</real>
 		</dict>
+		<key>97A7A235-BF68-42FD-ABC3-3FBC1DC2381D</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>3</integer>
+			<key>xpos</key>
+			<real>505</real>
+			<key>ypos</key>
+			<real>340</real>
+		</dict>
 		<key>C8DFF277-2C74-48D3-B685-F304268DF007</key>
 		<dict>
 			<key>colorindex</key>
 			<integer>8</integer>
+			<key>note</key>
+			<string>Click menu item</string>
 			<key>xpos</key>
-			<real>615</real>
+			<real>820</real>
 			<key>ypos</key>
 			<real>165</real>
 		</dict>
@@ -347,6 +616,8 @@ E.g
 		<dict>
 			<key>colorindex</key>
 			<integer>11</integer>
+			<key>note</key>
+			<string>Utilities</string>
 			<key>xpos</key>
 			<real>345</real>
 			<key>ypos</key>
@@ -357,7 +628,7 @@ E.g
 			<key>colorindex</key>
 			<integer>11</integer>
 			<key>xpos</key>
-			<real>615</real>
+			<real>820</real>
 			<key>ypos</key>
 			<real>320</real>
 		</dict>
