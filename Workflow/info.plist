@@ -299,8 +299,9 @@ ORIGINAL_DIR="$(pwd)"
 # Create temporary directory for compilation
 TEMP_DIR="/tmp/alfred_menu_build_$$"
 
-# Copy menu source to temporary directory
+# Copy source to temporary directory
 cp -r menu "$TEMP_DIR"
+cp -r swift-protobuf "$TEMP_DIR"
 
 # Build in temporary directory with output redirected to log
 cd "$TEMP_DIR"
