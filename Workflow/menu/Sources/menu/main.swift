@@ -228,9 +228,9 @@ else {
 }
 
 if a.results.items.count == 0 {
-    // a.add(.with { item in item.title = "No menu items" })
     a.add(AlfredResultItem.with {
-        $0.title = "No menu items"
+        $0.title = "No Menu Items Found"
+        $0.subtitle = "No menu items found for ‘\(args.query)’"
         $0.icon = .with { $0.path = "item-icons/icon.error.png" }
     })
 }
