@@ -52,7 +52,7 @@ enum Cache {
     static func load(app: String, settingsModifiedInterval: Double? = nil) -> [MenuItem]? {
         let controlURL = getURL(app, .cache)
         guard let controlData = try? Data(contentsOf: controlURL),
-              let control = try? MenuItemCache(serializedData: controlData)
+              let control = try? MenuItemCache(serializedBytes: controlData)
         else { return nil }
         
         // settings was updated since we last created the cache
@@ -68,7 +68,7 @@ enum Cache {
         
         let url = getURL(app, .menus)
         guard let d = try? Data(contentsOf: url),
-              let list = try? MenuItemList(serializedData: d) else { return nil }
+              let list = try? MenuItemList(serializedBytes: d) else { return nil }
         
         // if we timedout within 1 second
         // slide the timeout window forward
@@ -98,7 +98,7 @@ enum Cache {
             guard let controlData = try? Data(contentsOf: getURL(bundleID, .cache)) else {
                 continue
             }
-            guard let control = try? MenuItemCache(serializedData: controlData)
+            guard let control = try? MenuItemCache(serializedBytes: controlData)
             else {
                 continue
             }

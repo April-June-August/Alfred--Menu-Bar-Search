@@ -16,6 +16,7 @@ let package = Package(
         .executableTarget(
             name: "menu",
             dependencies: ["SwiftProtobuf"],
+            exclude: ["MenuItem.proto"],
             linkerSettings: [
                 .unsafeFlags([
                     "-Xlinker", "-sectcreate",
