@@ -4,27 +4,29 @@ Search through menu options of the frontmost application.
 
 [↓ Download](https://github.com/April-June-August/Alfred--Menu-Bar-Search/releases/latest/)
 
-<span>
-  <img src='assets/finder.png' width='33%' alt='finder'> 
-  <img src='assets/photos.png' width='33%' alt='photos'> 
-  <img src='assets/music.png' width='33%' alt='music'>
-  <img src='assets/search.png' width='33%' alt='search' align='top'>
-</span>
-
-
 ## Usage
 
-- Type `m` in Alfred to list menu bar items for frontmost application.
+Search menubar items of the frontmost app via the `menu` keyword. Prepend your query with `#` to search by keyboard shortcut. Press <kbd>↩</kbd> to action the item.
+
+![Searching through Xcode menu items](Workflow/images/keyword-usage.png)
+
+![Searching through Xcode menu items with shortcut](Workflow/images/keyword-usage-search-with-shortcut.png)
+
+Configure the Hotkey for faster triggering.
+
 - You can filter menu items by name, or do a fuzzy search.
 - Alternatively, set a hotkey to trigger the workflow as well.
 
 E.g
 
-- `m new tab` will match the menu item **New Tab**
-- `m cw` will match the menu item **Close Window**
+- `menu new tab` will match the menu item **New Tab**
+- `menu cw` will match the menu item **Close Window**
 
 
 ## Change log
+
+<details>
+<summary>Click to expand changelog</summary>
 
 - 1.0 - Initial Release
 - 1.1 - Added Fuzzy Text Matching for Menus
@@ -50,6 +52,8 @@ E.g
 - 1.8 - Fixed the universal build
 - 1.9 - changed to user configuration, and signed executable (exported using Alfred 5)
 - 2.0 - Alfred workflow gallery support! With added shortcut search, brand new configuration settings, tweaks to caching behaviour, brand new icons
+
+</details>
 
 ## Credits
 

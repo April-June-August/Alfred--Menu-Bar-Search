@@ -149,37 +149,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>0</integer>
-				<key>focusedappvariable</key>
-				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>0</integer>
-				<key>hotmod</key>
-				<integer>0</integer>
-				<key>hotstring</key>
-				<string></string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedAppsMode</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
-			<key>uid</key>
-			<string>892B9EF8-E33C-4D32-BBEB-591DFBEFFFEC</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -252,6 +221,37 @@ fi</string>
 			<string>25DA0D72-264A-4CD8-9A6A-9FFD4B652DF1</string>
 			<key>version</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>892B9EF8-E33C-4D32-BBEB-591DFBEFFFEC</string>
+			<key>version</key>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -496,52 +496,31 @@ fi</string>
 	<key>readme</key>
 	<string># Menu Bar Search
 
-Quickly search menu bar items of the front most application.
-
-Based on modifications done by ctwise, which is based almost entirely on menu bar search workflow by Jeroen van der Neut.
+Search through menu options of the frontmost application. 
 
 ## Usage
 
-Type `m` in Alfred to list menu bar items for front most application
-You can filter menu items by name, or do a fuzzy search.
+Search menubar items of the frontmost app via the `menu` keyword. Prepend your query with `#` to search by keyboard shortcut. Press &lt;kbd&gt;↩&lt;/kbd&gt; to action the item.
+
+![Searching through Xcode menu items](images/keyword-usage.png)
+
+![Searching through Xcode menu items with shortcut](images/keyword-usage-search-with-shortcut.png)
+
+Configure the Hotkey for faster triggering.
+
+- You can filter menu items by name, or do a fuzzy search.
+- Alternatively, set a hotkey to trigger the workflow as well.
 
 E.g
 
-- `m new tab` will match the menu item **New Tab**
-- `m cw` will match the menu item **Close Window**
+- `menu new tab` will match the menu item **New Tab**
+- `menu cw` will match the menu item **Close Window**
 
+## Credits
 
-## Change log
-
-- 1.0 - Initial Release
-- 1.1 - Added Fuzzy Text Matching for Menus
-
-  If you have a menu item `New Tab`, then typing `m nt` in Alfred will match `New Tab`, since `n` and `t` matches the first letters of the menu text.
-
-- 1.1.1 - Changed run behaviour to terminate previous script, this makes the experience slightly more faster
-- 1.2 - Completely native menu clicking, removed reliance on AppleScript
-  - 1.2.1 - Performance improvements when generating menus using direct JSON encoding
-  - 1.2.2 - More performance improvements while filtering menu items
-- 1.3 - Added `-async` flag to allow threaded scanning and populating of menus
-- 1.4 - Added `-cache` setting to enable menu result caching and also set a timeout for cache invalidation
-  - 1.4.1 - Invalidate cache (if present) after actioning a menu press
-  - 1.4.2 - Slide the cache invalidation window forward in case we get invalidated by a near miss
-  - 1.4.3 - Speed improvements to caching, text search and fuzzy matching
-  - 1.4.4 - Added `-no-apple-menu` flag that will skip the apple menu items
-  - 1.4.5 - Tuned fuzzy matcher, allows non-continuous anchor token search
-- 1.5 - Faster caching using protocol buffers
-  - 1.5.1 - Reduced file creation for cache storage
-  - 1.5.2 - Better support for command line apps that create menu bar owning applications
-  - 1.5.3 - Protocol buffer everything - microscopic speed improvements, but hey...
-
-  - 1.5.4 - Added various environment variables to fine tune menu listings
-  - 1.5.5 - Tweaked ranking of search results for better menu listings
-
-- 1.6 - added per app customization settings, `-show-apple-menu` flag
-- 1.7 - universal build for M1 and Intel
-- 1.8 - fixed universal build
-- 1.9 - changed to user configuration, and signed executable (exported using Alfred 5)
-- 2.0 - Alfred workflow gallery support! With added shortcut search, brand new configuration settings, tweaks to caching behaviour, brand new icons</string>
+- This repo is a fork of [Benzi Ahamed](https://github.com/BenziAhamed)’s [Menu Bar Search](https://github.com/BenziAhamed/Menu-Bar-Search) ([abandoned](https://github.com/BenziAhamed/Menu-Bar-Search/pull/33)), including a [fix](https://github.com/occludedpixel/Menu-Bar-Search) from [occludedpixel](https://github.com/occludedpixel).
+- Based on the ctwise's ObjC implementation of [Menu Bar Search](https://www.alfredforum.com/topic/1993-menu-search/), which I've ported over to Swift and added caching and per app configuration to speed things up.
+- Bundled with Apple’s [swift-protobuf](https://github.com/apple/swift-protobuf), licensed under [Apache License 2.0](https://github.com/apple/swift-protobuf/blob/main/LICENSE.txt).</string>
 	<key>uidata</key>
 	<dict>
 		<key>25DA0D72-264A-4CD8-9A6A-9FFD4B652DF1</key>
