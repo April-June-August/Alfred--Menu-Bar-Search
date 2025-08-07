@@ -14,14 +14,7 @@ Search menubar items of the frontmost app via the `menu` keyword. Prepend your q
 
 Configure the Hotkey for faster triggering.
 
-- You can filter menu items by name, or do a fuzzy search.
-- Alternatively, set a hotkey to trigger the workflow as well.
-
-E.g
-
-- `menu new tab` will match the menu item **New Tab**
-- `menu cw` will match the menu item **Close Window**
-
+Fuzzy searches supported. For instance, `menu cw` will match the menu item **Close Window**
 
 ## Change log
 
