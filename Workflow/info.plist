@@ -149,6 +149,37 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>action</key>
+				<integer>0</integer>
+				<key>argument</key>
+				<integer>0</integer>
+				<key>focusedappvariable</key>
+				<false/>
+				<key>focusedappvariablename</key>
+				<string></string>
+				<key>hotkey</key>
+				<integer>0</integer>
+				<key>hotmod</key>
+				<integer>0</integer>
+				<key>hotstring</key>
+				<string></string>
+				<key>leftcursor</key>
+				<false/>
+				<key>modsmode</key>
+				<integer>0</integer>
+				<key>relatedAppsMode</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.hotkey</string>
+			<key>uid</key>
+			<string>892B9EF8-E33C-4D32-BBEB-591DFBEFFFEC</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -221,37 +252,6 @@ fi</string>
 			<string>25DA0D72-264A-4CD8-9A6A-9FFD4B652DF1</string>
 			<key>version</key>
 			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>0</integer>
-				<key>focusedappvariable</key>
-				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>0</integer>
-				<key>hotmod</key>
-				<integer>0</integer>
-				<key>hotstring</key>
-				<string></string>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedAppsMode</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
-			<key>uid</key>
-			<string>892B9EF8-E33C-4D32-BBEB-591DFBEFFFEC</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -429,7 +429,7 @@ if [ ! -f "./menu/menu" ]; then
     {
       "arg": "compile-script",
       "title": "Compile the binary first",
-      "subtitle": "Press ↩ to compile. Should completed within 1 minute. You will be notified when done."
+      "subtitle": "Press ↩ to compile. You will be notified when done."
     }
   ]
 }
@@ -622,7 +622,7 @@ Fuzzy searches supported. For instance, `menu cw` will match the menu item **Clo
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>Keyword to search through menu bar actions for the frontmost application</string>
+			<string>Keyword to search through menu items for the frontmost application</string>
 			<key>label</key>
 			<string>Main Keyword</string>
 			<key>type</key>
@@ -633,50 +633,56 @@ Fuzzy searches supported. For instance, `menu cw` will match the menu item **Clo
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>default</key>
-				<string>40</string>
-				<key>placeholder</key>
-				<string>Enter a postive integer, defaults to 40</string>
-				<key>required</key>
+				<key>defaultvalue</key>
+				<integer>40</integer>
+				<key>markercount</key>
+				<integer>20</integer>
+				<key>maxvalue</key>
+				<integer>200</integer>
+				<key>minvalue</key>
+				<integer>10</integer>
+				<key>onlystoponmarkers</key>
 				<true/>
-				<key>trim</key>
+				<key>showmarkers</key>
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>This configuration controls how many menu items should be loaded at every level of the menu hierarchy. 
+			<string>Controls the maximum number of menu items loaded at each hierarchy level.
 
-Limiting this will speed up getting results, but you can tweak this in case you need to fetch more results.
-
-Some applications, e.g. internet browsers, may offer a "History" menu of all web pages accessed, which may contain a lot of sub-menu items. Loading all of them will make the workflow slow, and we limit to the first few, as specified using this configuration.</string>
+Lower values improve performance but may miss items. Useful for limiting large menus like browser History that can contain many entries.</string>
 			<key>label</key>
-			<string>Maximum items per menu</string>
+			<string>Maximum Items Per Menu</string>
 			<key>type</key>
-			<string>textfield</string>
+			<string>slider</string>
 			<key>variable</key>
 			<string>maxItemsPerMenu</string>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>default</key>
-				<string>10</string>
-				<key>placeholder</key>
-				<string>Enter a postive integer, defaults to 10</string>
-				<key>required</key>
-				<true/>
-				<key>trim</key>
+				<key>defaultvalue</key>
+				<integer>10</integer>
+				<key>markercount</key>
+				<integer>10</integer>
+				<key>maxvalue</key>
+				<integer>10</integer>
+				<key>minvalue</key>
+				<integer>1</integer>
+				<key>onlystoponmarkers</key>
+				<false/>
+				<key>showmarkers</key>
 				<true/>
 			</dict>
 			<key>description</key>
-			<string>How deep should we search for menu items.
+			<string>Controls how deep to search in menu hierarchies.
 
-The depth of a menu item is determined by how many menu entries you need to select to reach that menu item. E.g. If you have a menu structure like "File → Export → Export to PDF", the "Export to PDF" is at a depth of 2, since that option has two menu items in its path:  "File" and "Export".
+Depth is the number of menu levels to traverse. E.g., ‘File → Export → Export to PDF’ has a depth of 2 (‘File’ and ‘Export’).
 
-Limiting the depth allows for the menus to be loaded quicker.</string>
+Lower values improve performance but may miss deeply nested items.</string>
 			<key>label</key>
-			<string>Maximum sub menu depth</string>
+			<string>Maximum Sub-Menu Depth</string>
 			<key>type</key>
-			<string>textfield</string>
+			<string>slider</string>
 			<key>variable</key>
 			<string>maxSubMenusToSearch</string>
 		</dict>
@@ -688,12 +694,14 @@ Limiting the depth allows for the menus to be loaded quicker.</string>
 				<key>required</key>
 				<false/>
 				<key>text</key>
-				<string>Show in search results</string>
+				<string>Show Disabled Menu Items</string>
 			</dict>
 			<key>description</key>
-			<string>If enabled, disabled menu items will be displayed. Selecting them may not perform any valid action in the focused app.</string>
+			<string>Shows disabled (grayed out) menu items in search results. Disabled items are prefixed with ❌ for clarity.
+
+Note: Some apps like BBEdit mark certain items as disabled when Alfred is active, but they can still be activated. This option ensures all menu items remain accessible for such apps.</string>
 			<key>label</key>
-			<string>Disabled menu items</string>
+			<string></string>
 			<key>type</key>
 			<string>checkbox</string>
 			<key>variable</key>
@@ -707,12 +715,12 @@ Limiting the depth allows for the menus to be loaded quicker.</string>
 				<key>required</key>
 				<false/>
 				<key>text</key>
-				<string>Show in search results</string>
+				<string>Show  Menu Items</string>
 			</dict>
 			<key>description</key>
-			<string>Determines if menu items from the Apple menu be included in the search results. By default, we only include the app-specific menu items.</string>
+			<string>Include items from the Apple menu.</string>
 			<key>label</key>
-			<string>Apple  menu items</string>
+			<string></string>
 			<key>type</key>
 			<string>checkbox</string>
 			<key>variable</key>
@@ -726,18 +734,12 @@ Limiting the depth allows for the menus to be loaded quicker.</string>
 				<key>required</key>
 				<false/>
 				<key>text</key>
-				<string>Refresh on every new search</string>
+				<string>Always Fetch Latest Items</string>
 			</dict>
 			<key>description</key>
-			<string>When enabled, we will refresh all cached menu items for the current app when starting a new search.
-
-If disabled, the previous cached menu items are loaded (if they exist).
-
-Keeping this enabled incurs a slight delay for new searches, but ensures you will always have menu items that are the latest.
-
-Recommended to keep this enabled always.</string>
+			<string>Fetch current menu items for every search. Uses cached items if disabled.</string>
 			<key>label</key>
-			<string>Cached menu items</string>
+			<string></string>
 			<key>type</key>
 			<string>checkbox</string>
 			<key>variable</key>
