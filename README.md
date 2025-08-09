@@ -2,7 +2,13 @@
 
 Search through menu options of the frontmost application. 
 
-[↓ Download](https://github.com/April-June-August/Alfred--Menu-Bar-Search/releases/latest/)
+## Installation
+
+1. [➡️ Download the latest release](../../releases/latest)
+
+2. Double click the `.alfredworkflow` file to install
+
+Note that the [Alfred Powerpack](https://www.alfredapp.com/powerpack/) is required to use workflows.
 
 ## Usage
 
