@@ -233,6 +233,7 @@ func getMenuItems(
             menuItem.path = menuPath
             menuItem.pathIndices = pathIndices.isEmpty ? "\(i)" : pathIndices + ",\(i)"
             menuItem.shortcut = getShortcut(cmd, modifiers, virtualKey)
+            menuItem.enabled = enabled  // Store the enabled state
             menuItem.searchPath = menuItem.path.map {
                 $0.folding(options: [.caseInsensitive, .diacriticInsensitive], locale: nil)
             }

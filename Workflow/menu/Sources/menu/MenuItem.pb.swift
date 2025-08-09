@@ -61,6 +61,8 @@ struct MenuItem: Sendable {
 
   var searchPath: [String] = []
 
+  var enabled: Bool = false
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -240,7 +242,7 @@ extension MenuItemList: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
 
 extension MenuItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = "MenuItem"
-  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}pathIndices\0\u{1}shortcut\0\u{1}path\0\u{1}searchPath\0")
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap(bytecode: "\0\u{1}pathIndices\0\u{1}shortcut\0\u{1}path\0\u{1}searchPath\0\u{1}enabled\0")
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
@@ -252,6 +254,7 @@ extension MenuItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
       case 2: try { try decoder.decodeSingularStringField(value: &self.shortcut) }()
       case 3: try { try decoder.decodeRepeatedStringField(value: &self.path) }()
       case 4: try { try decoder.decodeRepeatedStringField(value: &self.searchPath) }()
+      case 5: try { try decoder.decodeSingularBoolField(value: &self.enabled) }()
       default: break
       }
     }
@@ -270,6 +273,9 @@ extension MenuItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
     if !self.searchPath.isEmpty {
       try visitor.visitRepeatedStringField(value: self.searchPath, fieldNumber: 4)
     }
+    if self.enabled != false {
+      try visitor.visitSingularBoolField(value: self.enabled, fieldNumber: 5)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -278,6 +284,7 @@ extension MenuItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
     if lhs.shortcut != rhs.shortcut {return false}
     if lhs.path != rhs.path {return false}
     if lhs.searchPath != rhs.searchPath {return false}
+    if lhs.enabled != rhs.enabled {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

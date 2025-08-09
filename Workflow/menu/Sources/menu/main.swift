@@ -144,7 +144,9 @@ func render(_ menu: MenuItem) {
     let apple = menu.appleMenuItem
     a.add(.with {
         $0.uid = args.learning ? "\(appBundleId)>\(menu.uid)" : ""
-        $0.title = menu.shortcut.isEmpty ? menu.title : "\(menu.title) - \(menu.shortcut)"
+        // Add ❌️ prefix for disabled items
+        let titleText = menu.shortcut.isEmpty ? menu.title : "\(menu.title) - \(menu.shortcut)"
+        $0.title = menu.enabled ? titleText : "❌️ \(titleText)"
         $0.subtitle = menu.subtitle
         $0.arg = menu.arg
         $0.icon.path = apple ? "item-icons/apple-icon.png" : appPath
