@@ -11,7 +11,7 @@ Search through menu options of the frontmost application.
 
 ## Usage
 
-Search menubar items of the frontmost app via the `menu` keyword.
+Search menu bar items of the frontmost app via the `menu` keyword.
 
 ![Searching through Xcode menu items](Workflow/images/keyword-usage.png)
 
