@@ -11,15 +11,19 @@ Search through menu options of the frontmost application.
 
 ## Usage
 
-Search menubar items of the frontmost app via the `menu` keyword. Prepend your query with `#` to search by keyboard shortcut. Press <kbd>↩</kbd> to action the item.
+Search menubar items of the frontmost app via the `menu` keyword.
 
 ![Searching through Xcode menu items](Workflow/images/keyword-usage.png)
 
-![Searching through Xcode menu items with shortcut](Workflow/images/keyword-usage-search-with-shortcut.png)
+* <kbd>↩</kbd> Action the item.
 
 Configure the Hotkey for faster triggering.
 
-Fuzzy searches supported. For instance, `menu cw` will match the menu item **Close Window**
+Prepend your query with `#` to search by keyboard shortcut.
+
+![Searching through Xcode menu items with shortcut](Workflow/images/keyword-usage-search-with-shortcut.png)
+
+Fuzzy searches supported. For instance, `menu cw` will match the menu item ‘Close Window’.
 
 ## Change log
 
