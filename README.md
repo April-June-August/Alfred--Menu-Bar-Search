@@ -2,12 +2,7 @@
 
 Search through menu options of the frontmost application. 
 
-## Installation
-
-1. [⤓ Download the latest release](../../releases/latest)
-
-2. Double-click the `.alfredworkflow` file to install
-
+[⤓ Install on the Alfred Gallery](https://alfred.app/workflows/mayjunejuly/menu-bar-search/)
 
 ## Usage
 
