@@ -55,7 +55,7 @@ Fuzzy searches supported. For instance, `menu cw` will match the menu item ‘Cl
 ## Credits
 
 - This repo is a fork of [Benzi Ahamed](https://github.com/BenziAhamed)’s [Menu Bar Search](https://github.com/BenziAhamed/Menu-Bar-Search) ([abandoned](https://github.com/BenziAhamed/Menu-Bar-Search/pull/33)), including a [fix](https://github.com/occludedpixel/Menu-Bar-Search) from [occludedpixel](https://github.com/occludedpixel).
-- Based on the ctwise’s ObjC implementation of [Menu Bar Search](https://www.alfredforum.com/topic/1993-menu-search/), which Benzi Ahamed have ported over to Swift and added caching and per app configuration to speed things up.
+- Based on the ctwise’s ObjC implementation of [Menu Bar Search](https://www.alfredforum.com/topic/1993-menu-search/), which Benzi Ahamed has ported over to Swift and added caching and per app configuration to speed things up.
 - Bundled with Apple’s [swift-protobuf](https://github.com/apple/swift-protobuf), licensed under [Apache License 2.0](https://github.com/apple/swift-protobuf/blob/main/LICENSE.txt).
 
 ## License
