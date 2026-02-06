@@ -537,7 +537,7 @@ Fuzzy searches supported. For instance, `menu cw` will match the menu item ‘Cl
 			<key>colorindex</key>
 			<integer>1</integer>
 			<key>note</key>
-			<string>Compile binary.</string>
+			<string>Compile binary</string>
 			<key>xpos</key>
 			<real>675</real>
 			<key>ypos</key>
