@@ -158,31 +158,81 @@ let r = render  // prevent swiftc compiler segfault
 
 if !args.query.isEmpty {
     let term = args.query
+    let queryTerms = term.split(separator: " ").map { String($0) }
 
     menuItems
         .map { (menu: MenuItem) -> (menu: MenuItem, search: (matched: Bool, score: Int)) in
+            let combinedPath = menu.searchPath.joined(separator: " ")
+            var bestScore = 0
+            var matched = false
+
+            // Try 1: Direct menu item match
             var level = menu.path.count - 1
             let menuText = menu.searchPath[level] + " " + menu.shortcut.lowercased()
-            let search = menuText.fastMatch(term)
+            var search = menuText.fastMatch(term)
             if search.matched {
-                return (menu, search)
+                matched = true
+                // Boost if substring match (word-level or continuous)
+                if menuText.contains(term) { search.score *= 100 }
+                bestScore = max(bestScore, search.score * 1000)
             }
+
+            // Try 2: Combined path match
+            search = combinedPath.fastMatch(term)
+            if search.matched {
+                matched = true
+                if combinedPath.contains(term) { search.score *= 100 }
+                bestScore = max(bestScore, search.score * 500)
+            }
+
+            // Try 3: Multi-term match (words in any order)
+            if queryTerms.count > 1 {
+                var allMatched = true
+                var totalScore = 0
+                var substringCount = 0
+
+                for queryTerm in queryTerms {
+                    let termMatch = combinedPath.fastMatch(queryTerm)
+                    if termMatch.matched {
+                        var termScore = termMatch.score
+                        if combinedPath.contains(queryTerm) {
+                            termScore *= 100
+                            substringCount += 1
+                        }
+                        totalScore += termScore
+                    } else {
+                        allMatched = false
+                        break
+                    }
+                }
+
+                if allMatched {
+                    matched = true
+                    let avgScore = totalScore / queryTerms.count
+                    bestScore = max(bestScore, avgScore * 300)
+                }
+            }
+
+            // Try 4: Parent level match
             level -= 1
             var levelAdjust = 2
             while level >= 0 {
-                var search = menu.searchPath[level].fastMatch(term)
+                search = menu.searchPath[level].fastMatch(term)
                 if search.matched {
-                    if search.score > 0 {
-                        search.score /= levelAdjust
-                    } else {
-                        search.score *= levelAdjust
-                    }
-                    return (menu, search)
+                    matched = true
+                    if menu.searchPath[level].contains(term) { search.score *= 100 }
+                    bestScore = max(bestScore, (search.score * 100) / levelAdjust)
                 }
                 level -= 1
                 levelAdjust *= 2
             }
-            return (menu, (false, 0))
+
+            // Boost enabled menus
+            if matched && menu.enabled {
+                bestScore *= 10
+            }
+
+            return (menu, (matched, bestScore))
         }
         .filter { $0.search.matched }
         .sorted(by: { $0.search.score > $1.search.score })
