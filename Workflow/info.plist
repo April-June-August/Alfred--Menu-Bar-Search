@@ -751,7 +751,7 @@ Note: Some apps like BBEdit mark certain items as disabled when Alfred is active
 		</dict>
 	</array>
 	<key>version</key>
-	<string>2025.5</string>
+	<string>2026.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/April-June-August/Alfred--Menu-Bar-Search</string>
 </dict>
